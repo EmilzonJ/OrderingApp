@@ -1,0 +1,12 @@
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/bin/Debug/net5.0/Domain.deps.json
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/bin/Debug/net5.0/Domain.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/bin/Debug/net5.0/ref/Domain.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/bin/Debug/net5.0/Domain.pdb
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.csprojAssemblyReference.cache
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.AssemblyInfoInputs.cache
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.AssemblyInfo.cs
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.csproj.CoreCompileInputs.cache
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/ref/Domain.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.pdb
