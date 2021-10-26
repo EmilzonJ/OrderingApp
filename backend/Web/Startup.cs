@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Data;
 using Data.Repositories;
 using Domain.Repositories;
@@ -18,10 +16,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
-using Web.Commands.Products;
 using Web.CommandsValidator.ProductValidation;
-using Web.MapperProfiles;
 using Web.Middlewares;
+using Web.Hubs;
 
 namespace Web
 {
@@ -49,6 +46,10 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            
+            // SignalR
+            services.AddSignalR();
+
             // MediatR
             services.AddMediatR(typeof(IIdentityGenerator<>));
 
@@ -64,6 +65,23 @@ namespace Web
                     options.Authority = Configuration[ENV_AUTH0_DOMAIN];
                     options.Audience = Configuration[ENV_AUTH0_API_IDENTIFIER];
                     options.RequireHttpsMetadata = enableHttps;
+                    
+                    // SignalR
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            var path = context.HttpContext.Request.Path;
+                            
+                            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/serverHub"))
+                            {
+                                context.Token = accessToken;
+                            }
+                            
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             // CORS
@@ -95,7 +113,12 @@ namespace Web
             
             services.AddControllers().AddFluentValidation(assembly =>
             {
-                assembly.RegisterValidatorsFromAssemblyContaining<AddProductValidation>(); 
+                assembly.RegisterValidatorsFromAssemblyContaining<AddProductValidation>();
+            });
+
+            services.AddControllers().AddJsonOptions(options => // SignalR
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
         }
 
@@ -205,7 +228,11 @@ namespace Web
             // CORS
             app.UseCors(_clientAppOrigins);
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<ServerHub>("/serverHub");
+            });
         }
     }
 }

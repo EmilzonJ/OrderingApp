@@ -5,25 +5,31 @@ using AutoMapper;
 using Web.Commands.Products;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Web.Commands.Shared;
 using Web.DTOs.Products.Requests;
 using Web.DTOs.Products.Responses;
 using Web.DTOs.Shared;
+using Web.Hubs;
 
 namespace Web.Controllers.Products
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IHubContext<ServerHub> _hubContext;
 
-        public ProductController(IMediator mediator, IMapper mapper)
+        public ProductController(IMediator mediator, IMapper mapper, IHubContext<ServerHub> hubContext)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _hubContext = hubContext;
         }
 
         [HttpGet]

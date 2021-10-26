@@ -48,7 +48,14 @@ namespace Web.CommandHandlers.Products
 
         public async Task<Product> Handle(GetProductByIdCommand request, CancellationToken cancellationToken)
         {
-            return await _readOnlyRepository.GetById(request.Id);
+            var product = await _readOnlyRepository.GetById(request.Id);
+
+            if (product == null)
+                throw new
+                    ApiException(HttpStatusCode.NotFound,
+                        new {message = $"No existe el producto con Id = {request.Id}"});
+
+            return product;
         }
 
         public async Task<Product> Handle(AddProductCommand request, CancellationToken cancellationToken)
