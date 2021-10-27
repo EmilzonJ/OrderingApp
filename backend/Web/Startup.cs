@@ -91,10 +91,11 @@ namespace Web
                     _clientAppOrigins,
                     builder =>
                     {
-                        builder.AllowAnyOrigin()
+                        builder
+                            .WithOrigins("http://localhost:3000/")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithExposedHeaders("content-disposition");
+                            .AllowCredentials();
                     });
             });
 
