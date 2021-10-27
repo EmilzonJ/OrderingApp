@@ -7,9 +7,9 @@ namespace Web.CommandsValidator.ProductValidation
     {
         public AddProductValidation()
         {
-            RuleFor(_ => _.Product.Name).NotEmpty();
-            RuleFor(_ => _.Product.Price).NotEmpty();
-            RuleFor(_ => _.Product.Size).NotEmpty();
+            RuleFor(_ => _.Product.Name).NotEmpty().NotNull();
+            RuleFor(_ => _.Product.Price).NotEmpty().NotNull();
+            RuleFor(_ => _.Product.Size).NotEmpty().NotNull();
         }
     }
 }

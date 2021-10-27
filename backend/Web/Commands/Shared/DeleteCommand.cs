@@ -1,5 +1,6 @@
 using System;
 using MediatR;
+using Web.DTOs.Shared;
 
 namespace Web.Commands.Shared
 {

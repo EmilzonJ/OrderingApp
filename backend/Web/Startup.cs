@@ -231,7 +231,7 @@ namespace Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ServerHub>("/serverHub");
+                endpoints.MapHub<ProductHub>("/productHub");
             });
         }
     }

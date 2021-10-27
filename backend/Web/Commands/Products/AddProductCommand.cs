@@ -1,13 +1,14 @@
-using Domain.Entities;
 using MediatR;
+using Web.DTOs.Products.Requests;
+using Web.DTOs.Products.Responses;
 
 namespace Web.Commands.Products
 {
-    public class AddProductCommand : IRequest<Product>
+    public class AddProductCommand : IRequest<AddProductReponse>
     {
-        public Product Product { get; set; }
+        public AddProductRequest Product { get; set; }
         
-        public AddProductCommand(Product product)
+        public AddProductCommand(AddProductRequest product)
         {
             Product = product;
         }

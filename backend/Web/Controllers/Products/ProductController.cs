@@ -22,51 +22,34 @@ namespace Web.Controllers.Products
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
-        private readonly IHubContext<ServerHub> _hubContext;
 
-        public ProductController(IMediator mediator, IMapper mapper, IHubContext<ServerHub> hubContext)
+        public ProductController(IMediator mediator, IMapper mapper, IHubContext<ProductHub> productHub)
         {
             _mediator = mediator;
-            _mapper = mapper;
-            _hubContext = hubContext;
         }
 
         [HttpGet]
         public async Task<IEnumerable<GetProductResponse>> GetProducts()
         {
-            var products = await _mediator.Send(new GetProductsCommand());
-
-            return _mapper.Map<IEnumerable<GetProductResponse>>(products);
+            return await _mediator.Send(new GetProductsCommand());
         }
 
         [HttpGet("{idProduct:guid}")]
         public async Task<GetProductResponse> GetProductById(Guid idProduct)
         {
-            var product = await _mediator.Send(new GetProductByIdCommand(idProduct));
-
-            return _mapper.Map<GetProductResponse>(product);
+            return await _mediator.Send(new GetProductByIdCommand(idProduct));
         }
 
         [HttpPost]
         public async Task<AddProductReponse> AddProduct([FromBody] AddProductRequest request)
         {
-            var product = _mapper.Map<Product>(request);
-
-            var response = await _mediator.Send(new AddProductCommand(product));
-
-            return _mapper.Map<AddProductReponse>(response);
+            return await _mediator.Send(new AddProductCommand(request));
         }
 
-        [HttpPut("{idProduct:guid}")]
-        public async Task<GetProductResponse> UpdateProduct(Guid idProduct, [FromBody] UpdateProductRequest request)
+        [HttpPut]
+        public async Task<GetProductResponse> UpdateProduct([FromBody] UpdateProductRequest request)
         {
-            var product = _mapper.Map<Product>(request);
-            product.Id = idProduct;
-
-            var response = await _mediator.Send(new UpdateProductCommand(product));
-
-            return _mapper.Map<GetProductResponse>(response);
+            return await _mediator.Send(new UpdateProductCommand(request));
         }
 
         [HttpDelete("{idProduct:guid}")]
@@ -76,7 +59,6 @@ namespace Web.Controllers.Products
 
             return new DeleteReponse
             {
-                IsDeleted = true,
                 Message = "Producto eliminado con exito"
             };
         }
