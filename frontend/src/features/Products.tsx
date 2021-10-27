@@ -1,57 +1,25 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import { HttpTransportType, HubConnectionBuilder } from "@microsoft/signalr"
 import { useEffect, useState } from "react"
-import Productss from "../components/products/Products"
+import { CreateProduct } from "../components/products/createProduct/CreateProduct"
+import ProductsList from "../components/products/Products"
+import { useWS } from "../hooks/useWS"
+import { Product } from "../schemas/Product"
 
 export const Products = () => {
-  const { getAccessTokenSilently } = useAuth0();
-  const [conn, setConn] = useState<any>()
-  useEffect(() => {
-    const newConnection = new HubConnectionBuilder()
-      .withUrl('https://localhost:5001/productHub',
-        {
-          accessTokenFactory: () => getAccessTokenSilently(),
-          skipNegotiation: true,
-          transport: HttpTransportType.WebSockets
-        }
-      )
-      .withAutomaticReconnect()
-      .build();
-    setConn(newConnection)
+  const [products, setProducts] = useState<Product[]>([])
 
+  const { conn } = useWS({ connString: 'http://localhost:50001/productHub' })
 
+  conn?.send('sss', { ssa: 1 })
 
-    // newConnection.on('UpdateProduct', async (product: {}) => {
-    //   const  index=state.find(products=>products.id===product.id)
-
-    //   state.splice(index, 1, products)
-    // });
-
-    // newConnection.on('deleteProduct', async (product: {}) => {
-    //   const  index=state.find(products=>products.id===product.id)
-
-    //   state.splice(index, 1)
-    // });
-
-  }, [getAccessTokenSilently])
-
-  useEffect(() => {
-    if (conn) {
-      conn.start().then(() => {
-        console.log('conexion iniciada');
-      }).catch((err: any) => console.error(err));
-
-      conn.on('ReceiveProduct', (products: any) => {
-        console.log(products);
-      });
-    }
-
-  }, [conn])
-
-
+  conn?.off("sss")
+  
   return (
     <div>
-      <Productss />
+      hola hola
+      <ProductsList products={products} />
+      <CreateProduct />
     </div>
   )
 }

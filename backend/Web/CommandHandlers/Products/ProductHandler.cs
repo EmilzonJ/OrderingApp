@@ -67,7 +67,7 @@ namespace Web.CommandHandlers.Products
 
         public async Task<AddProductReponse> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
-            var product = _mapper.Map<Product>(request);
+            var product = _mapper.Map<Product>(request.Product);
             var id = _identityGenerator.Generate();
             product.Id = id;
             var response = await _writableRepository.Create(product);
