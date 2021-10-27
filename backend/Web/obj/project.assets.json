@@ -5832,32 +5832,34 @@
     ]
   },
   "packageFolders": {
-    "/home/emilz/.nuget/packages/": {}
+    "C:\\Users\\erick\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/emilz/Escritorio/RealTimeApp/backend/Web/Web.csproj",
+      "projectUniqueName": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Web/Web.csproj",
-      "packagesPath": "/home/emilz/.nuget/packages/",
-      "outputPath": "/home/emilz/Escritorio/RealTimeApp/backend/Web/obj/",
+      "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\Web.csproj",
+      "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/emilz/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/home/emilz/Escritorio/RealTimeApp/backend/Data/Data.csproj": {
-              "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Data/Data.csproj"
+            "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj"
             }
           }
         }
@@ -5911,12 +5913,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5925,7 +5921,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

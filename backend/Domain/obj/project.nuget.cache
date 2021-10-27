@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oFnq4D73QedWkqLuUlaN15x7B2yiNen3Pk4mU94qWNsCvXIOW+DiAiG3Me8XOvW4SuJP0eW92MOxVWsdhnVqVw==",
+  "dgSpecHash": "j7Qh99KovRPFLgGRypHG7fNdmYFjD6TxWzVEbnVmSkNGjS3aKFq0Z5PDukCJYVRXk2Tl5gYHyWZeBbrpzvMbVQ==",
   "success": true,
-  "projectFilePath": "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj",
-  "expectedPackageFiles": [
-    "/home/emilz/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

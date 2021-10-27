@@ -86,7 +86,7 @@ namespace Web.CommandHandlers.Products
                 throw new ApiException(HttpStatusCode.NotFound,
                     new {message = $"No existe el producto con Id = {request.Product.Id}"});
 
-            await _productHubContext.Clients.All.SendAsync("ReceiveProduct", response, cancellationToken);
+            await _productHubContext.Clients.All.SendAsync("UpdateProduct", response, cancellationToken);
 
             return _mapper.Map<GetProductResponse>(response);
         }

@@ -74,7 +74,7 @@ namespace Web
                             var accessToken = context.Request.Query["access_token"];
                             var path = context.HttpContext.Request.Path;
                             
-                            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/serverHub"))
+                            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/productHub"))
                             {
                                 context.Token = accessToken;
                             }
@@ -148,7 +148,7 @@ namespace Web
                             {"email", "Email"},
                         },
                         AuthorizationUrl =
-                            new Uri(configuration[ENV_AUTH0_DOMAIN] + "/authorize?audience=" +
+                            new Uri(configuration[ENV_AUTH0_DOMAIN] + "authorize?audience=" +
                                     configuration[ENV_AUTH0_API_IDENTIFIER])
                     }
                 }
@@ -216,6 +216,8 @@ namespace Web
             app.UseMiddleware<ErrorHandlerMiddlerware>();
             
             app.UseHttpsRedirection(); 
+            // CORS
+            app.UseCors(_clientAppOrigins);
             
             app.UseRouting();
 
@@ -225,8 +227,6 @@ namespace Web
             // Authorization
             app.UseAuthorization();
             
-            // CORS
-            app.UseCors(_clientAppOrigins);
 
             app.UseEndpoints(endpoints =>
             {

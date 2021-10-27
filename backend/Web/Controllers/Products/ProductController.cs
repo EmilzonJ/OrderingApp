@@ -23,7 +23,7 @@ namespace Web.Controllers.Products
     {
         private readonly IMediator _mediator;
 
-        public ProductController(IMediator mediator, IMapper mapper, IHubContext<ProductHub> productHub)
+        public ProductController(IMediator mediator)
         {
             _mediator = mediator;
         }

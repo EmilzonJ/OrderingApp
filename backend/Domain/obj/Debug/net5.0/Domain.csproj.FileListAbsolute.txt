@@ -10,3 +10,15 @@
 /home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.dll
 /home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/ref/Domain.dll
 /home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/Debug/net5.0/Domain.pdb
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\bin\Debug\net5.0\Domain.deps.json
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\bin\Debug\net5.0\Domain.dll
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\bin\Debug\net5.0\ref\Domain.dll
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\bin\Debug\net5.0\Domain.pdb
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.dll
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\ref\Domain.dll
+C:\Users\erick\OneDrive\Escritorio\proyectos\RealTimeApp\backend\Domain\obj\Debug\net5.0\Domain.pdb
