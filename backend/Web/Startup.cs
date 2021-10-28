@@ -13,6 +13,7 @@ using Web.Services.Interfaces;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
@@ -217,6 +218,18 @@ namespace Web
             app.UseMiddleware<ErrorHandlerMiddlerware>();
             
             app.UseHttpsRedirection(); 
+            
+            app.Use(async (context, next) =>
+            {
+                // var hubContext = context.RequestServices.GetRequiredService<IHubContext<ProductHub, IProductHub>>();
+                context.RequestServices.GetRequiredService<IHubContext<ProductHub, IProductHub>>();
+
+                if (next != null)
+                {
+                    await next.Invoke();
+                }
+            });
+            
             // CORS
             app.UseCors(_clientAppOrigins);
             
@@ -233,7 +246,9 @@ namespace Web
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<ProductHub>("/productHub");
+                
             });
+            
         }
     }
 }

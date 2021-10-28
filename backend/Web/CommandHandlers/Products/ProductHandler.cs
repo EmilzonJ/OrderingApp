@@ -28,12 +28,12 @@ namespace Web.CommandHandlers.Products
         private readonly IWritableRepository<Product, Guid> _writableRepository;
         private readonly IReadOnlyRepository<Product, Guid> _readOnlyRepository;
         private readonly IMapper _mapper;
-        private readonly IHubContext<ProductHub> _productHubContext;
+        private readonly IHubContext<ProductHub, IProductHub> _productHubContext;
         private readonly IIdentityGenerator<Guid> _identityGenerator;
 
         public ProductHandler(IWritableRepository<Product, Guid> writableRepository,
             IReadOnlyRepository<Product, Guid> readOnlyRepository, IIdentityGenerator<Guid> identityGenerator,
-            IMapper mapper, IHubContext<ProductHub> productHubContext)
+            IMapper mapper, IHubContext<ProductHub, IProductHub> productHubContext)
         {
             _writableRepository = writableRepository;
             _readOnlyRepository = readOnlyRepository;
@@ -71,8 +71,8 @@ namespace Web.CommandHandlers.Products
             var id = _identityGenerator.Generate();
             product.Id = id;
             var response = await _writableRepository.Create(product);
-            
-            await _productHubContext.Clients.All.SendAsync("ReceiveProduct", response, cancellationToken);
+
+            await _productHubContext.Clients.All.ReceiveProduct(response);
 
             return _mapper.Map<AddProductReponse>(response);
         }
@@ -86,7 +86,7 @@ namespace Web.CommandHandlers.Products
                 throw new ApiException(HttpStatusCode.NotFound,
                     new {message = $"No existe el producto con Id = {request.Product.Id}"});
 
-            await _productHubContext.Clients.All.SendAsync("UpdateProduct", response, cancellationToken);
+            await _productHubContext.Clients.All.UpdateProduct(response);
 
             return _mapper.Map<GetProductResponse>(response);
         }

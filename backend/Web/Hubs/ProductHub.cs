@@ -4,11 +4,18 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Web.Hubs
 {
-    public class ProductHub : Hub
+    public interface IProductHub
     {
-        public async Task Send(Product product)
+        Task ReceiveProduct(Product product);
+        Task UpdateProduct(Product product);
+    }
+    
+    public class ProductHub : Hub<IProductHub>
+    {
+        public async Task SendProduct(Product product)
         {
-            await Clients.All.SendAsync("ReceiveProducts", product);
+            await Clients.All.ReceiveProduct(product);
         }
+        
     }
 }
