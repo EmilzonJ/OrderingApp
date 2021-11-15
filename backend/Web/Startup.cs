@@ -1,23 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Data;
-using Data.Repositories;
-using Domain.Repositories;
-using Web.Services;
-using Web.Services.Interfaces;
-using FluentValidation.AspNetCore;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
+using Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
-using Web.CommandsValidator.ProductValidation;
 using Web.Middlewares;
 using Web.Hubs;
 
@@ -26,7 +15,6 @@ namespace Web
     public class Startup
     {
         public IConfiguration Configuration { get; set; }
-        private readonly string _connectionString;
 
         // CORS
         private readonly string _clientAppOrigins = "ClientApp";
@@ -39,7 +27,6 @@ namespace Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _connectionString = Configuration["DB_CONNECTION"];
         }
 
         #region Services
@@ -52,38 +39,10 @@ namespace Web
             services.AddSignalR();
 
             // MediatR
-            services.AddMediatR(typeof(IIdentityGenerator<>));
+            // services.AddMediatR(typeof(IIdentityGenerator<>));
 
             // Auth0
-            services.AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(options =>
-                {
-                    var enableHttps = Convert.ToBoolean(Configuration["AUTH0_ENABLE_HTTPS"]);
-                    options.Authority = Configuration[ENV_AUTH0_DOMAIN];
-                    options.Audience = Configuration[ENV_AUTH0_API_IDENTIFIER];
-                    options.RequireHttpsMetadata = enableHttps;
-                    
-                    // SignalR
-                    options.Events = new JwtBearerEvents
-                    {
-                        OnMessageReceived = context =>
-                        {
-                            var accessToken = context.Request.Query["access_token"];
-                            var path = context.HttpContext.Request.Path;
-                            
-                            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/productHub"))
-                            {
-                                context.Token = accessToken;
-                            }
-                            
-                            return Task.CompletedTask;
-                        }
-                    };
-                });
+            
 
             // CORS
             services.AddCors(options =>
@@ -93,9 +52,9 @@ namespace Web
                     builder =>
                     {
                         builder
-                            .WithOrigins("http://localhost:3000/")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
+                            .WithOrigins("http://localhost:3000/")
                             .AllowCredentials();
                     });
             });
@@ -103,35 +62,18 @@ namespace Web
             // Swagger
             services.AddSwaggerGen(); //Register the Swagger generator, defining 1 or more Swagger documents
             ConfigureSwagger(services, Configuration);
-
-            // Entity Framework
-            ConfigureDbContext(services);
-
-            // AutoMapper
-            services.AddAutoMapper(typeof(Startup));
-
-            // Configure Data Dependencies
-            ConfigureDataDependencies(services);
             
-            services.AddControllers().AddFluentValidation(assembly =>
-            {
-                assembly.RegisterValidatorsFromAssemblyContaining<AddProductValidation>();
-            });
+            services.AddHttpContextAccessor();
 
+            services.AddInfrastructureServices(Configuration); // Infrastructure layer Services
+            services.AddApplicationService();                   // Application layer Services
+            
             services.AddControllers().AddJsonOptions(options => // SignalR
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
         }
-
-        private void ConfigureDbContext(IServiceCollection services)
-        {
-            services.AddDbContext<AppDataContext>(options =>
-                options.UseLazyLoadingProxies()
-                    .UseSqlServer(_connectionString)
-            );
-        }
-
+        
         private void ConfigureSwagger(IServiceCollection services, IConfiguration configuration)
         {
             var securityScheme = new OpenApiSecurityScheme
@@ -185,22 +127,10 @@ namespace Web
                 swagger.AddSecurityRequirement(security);
             });
         }
-
-        private void ConfigureDataDependencies(IServiceCollection services)
-        {
-            services.AddHttpContextAccessor();
-
-            // Interfaces of repositories
-            services.AddScoped(typeof(IReadOnlyRepository<,>), typeof(ReadOnlyRepository<,>));
-            services.AddScoped(typeof(IWritableRepository<,>), typeof(WritableRepository<,>));
-
-            services.AddSingleton<IIdentityGenerator<Guid>, GuidIdentityGenerator>();
-        }
-
         #endregion Services
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDataContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // Swagger
             app.UseSwagger();
@@ -210,45 +140,25 @@ namespace Web
                 s.OAuthClientId(Configuration[ENV_AUTH0_CLIENT_ID]);
             });
 
-            // Entity Framework
-            dbContext.Database.Migrate();
-
             // Middlewares
             app.UseMiddleware<UnitOfWork>();
             app.UseMiddleware<ErrorHandlerMiddlerware>();
-            
-            app.UseHttpsRedirection(); 
-            
-            app.Use(async (context, next) =>
-            {
-                // var hubContext = context.RequestServices.GetRequiredService<IHubContext<ProductHub, IProductHub>>();
-                context.RequestServices.GetRequiredService<IHubContext<ProductHub, IProductHub>>();
-
-                if (next != null)
-                {
-                    await next.Invoke();
-                }
-            });
             
             // CORS
             app.UseCors(_clientAppOrigins);
             
             app.UseRouting();
-
-            //Authentication
+            
             app.UseAuthentication();
-
-            // Authorization
+            
             app.UseAuthorization();
             
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ProductHub>("/productHub");
-                
+                endpoints.MapHub<ProductEventsClientHub>("/products-events");
             });
-            
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Domain.Repositories
 {
     public interface IReadOnlyRepository <T, in TPKey> 
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetById(Guid id);
         IQueryable<T> Query { get; }
     }

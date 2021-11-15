@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Data;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http;
 
 namespace Web.Middlewares

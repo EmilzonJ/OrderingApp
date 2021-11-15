@@ -1,35 +1,171 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\Web.csproj": {}
+    "/home/emilz/Escritorio/RealTimeApp/backend/Web/Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj": {
+    "/home/emilz/Escritorio/RealTimeApp/backend/Application/Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj",
-        "projectName": "Data",
-        "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\obj\\",
+        "projectUniqueName": "/home/emilz/Escritorio/RealTimeApp/backend/Application/Application.csproj",
+        "projectName": "Application",
+        "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Application/Application.csproj",
+        "packagesPath": "/home/emilz/.nuget/packages/",
+        "outputPath": "/home/emilz/Escritorio/RealTimeApp/backend/Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/emilz/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\Domain.csproj"
+              "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj": {
+                "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[10.3.4, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj",
+        "packagesPath": "/home/emilz/.nuget/packages/",
+        "outputPath": "/home/emilz/Escritorio/RealTimeApp/backend/Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/emilz/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/home/emilz/.nuget/packages/",
+        "outputPath": "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/emilz/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj": {
+                "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Domain/Domain.csproj"
               }
             }
           }
@@ -89,95 +225,48 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
             }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\Domain.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Domain\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
           ],
-          "assetTargetFallback": true,
-          "warn": true,
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\Web.csproj": {
+    "/home/emilz/Escritorio/RealTimeApp/backend/Web/Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\Web.csproj",
+        "projectUniqueName": "/home/emilz/Escritorio/RealTimeApp/backend/Web/Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\Web.csproj",
-        "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Web\\obj\\",
+        "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Web/Web.csproj",
+        "packagesPath": "/home/emilz/.nuget/packages/",
+        "outputPath": "/home/emilz/Escritorio/RealTimeApp/backend/Web/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/emilz/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\erick\\OneDrive\\Escritorio\\proyectos\\RealTimeApp\\backend\\Data\\Data.csproj"
+              "/home/emilz/Escritorio/RealTimeApp/backend/Application/Application.csproj": {
+                "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Application/Application.csproj"
+              },
+              "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/Infrastructure.csproj"
               }
             }
           }
@@ -192,25 +281,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[8.1.1, )"
-            },
-            "FluentValidation.AspNetCore": {
-              "target": "Package",
-              "version": "[10.3.4, )"
-            },
-            "MediatR": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.11, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -231,6 +308,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -239,7 +322,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
         }
       }
     }
