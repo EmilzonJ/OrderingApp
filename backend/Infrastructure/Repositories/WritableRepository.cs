@@ -8,22 +8,18 @@ using Domain.Repositories;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Web.Services.Interfaces;
 
 namespace Infrastructure.Repositories
 {
     public class WritableRepository<T, TPKey> : IWritableRepository<T, TPKey> where T : class, IAuditEntity
     {
-
         private readonly AppDataContext _context;
-        private readonly IIdentityGenerator<Guid> _identityGenerator;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public WritableRepository(AppDataContext context, IHttpContextAccessor httpContextAccessor, IIdentityGenerator<Guid> identityGenerator)
+        public WritableRepository(AppDataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
-            _identityGenerator = identityGenerator;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -36,22 +32,22 @@ namespace Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
-        
+
 
         public IQueryable<T> Query { get; }
-        
-        
+
+
         public async Task<T> AddAsync(T entity)
         {
             var userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var date = DateTime.Now;
-    
+
             entity.CreatedBy = userId;
             entity.UpdatedBy = userId;
             entity.CreatedDate = date;
             entity.IsDeleted = false;
 
-           await _context.Set<T>().AddAsync(entity);
+            await _context.Set<T>().AddAsync(entity);
 
             await _context.SaveChangesAsync();
 
@@ -64,7 +60,7 @@ namespace Infrastructure.Repositories
             var date = DateTime.UtcNow;
             entity.UpdatedBy = userId;
             entity.UpdatedDate = date;
-            
+
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
 

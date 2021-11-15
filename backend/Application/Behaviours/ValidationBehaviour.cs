@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Domain.CustomExceptions;
 using FluentValidation;
 using MediatR;
 
@@ -26,11 +28,11 @@ namespace Application.Behaviours
 
                 var validationResults =
                     await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));
-                var failures = validationResults.SelectMany(r => r.Errors).Where(f => f != null).ToList();
+                var failures = validationResults.SelectMany(r => r.Errors).Where(f => f != null).ToList().Select(f => f.ErrorMessage);
 
-                if (failures.Count != 0)
+                if (failures != null)
                 {
-                    throw new ValidationException(failures);
+                    throw new ApiException(HttpStatusCode.BadRequest, failures);
                 }
             }
             

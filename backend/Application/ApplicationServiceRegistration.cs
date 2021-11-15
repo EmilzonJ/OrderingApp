@@ -14,8 +14,10 @@ namespace Application
             services.AddAutoMapper(assemblies: localAssembly);
             services.AddValidatorsFromAssembly(assembly: localAssembly);
 
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            
             return services;
         } 
     }

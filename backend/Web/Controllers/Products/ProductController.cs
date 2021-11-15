@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Application.Commands.Products;
+using Application.Features.Products.Commands.AddProduct;
 using Application.Features.Products.Queries.GetProductList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

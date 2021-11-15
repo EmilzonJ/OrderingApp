@@ -10,13 +10,13 @@ using Web.Services.Interfaces;
 
 namespace Infrastructure
 {
-    public static class InfraestructureServiceRegistration
+    public static class InfrastructureServiceRegistration
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,
             IConfiguration configuration)
         {
             services.AddDbContext<AppDataContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString(configuration["DB_CONNECTION"])));
+                options.UseSqlServer(configuration["DB_CONNECTION"]));
 
             services.AddScoped(typeof(IReadOnlyRepository<,>), typeof(ReadOnlyRepository<,>));
             services.AddScoped(typeof(IWritableRepository<,>), typeof(WritableRepository<,>));

@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Commands.Products
+namespace Application.Features.Products.Commands.AddProduct
 {
     public class AddProductCommand : IRequest
     {

@@ -1,4 +1,3 @@
-using Application.Commands.Products;
 using FluentValidation;
 
 namespace Application.Features.Products.Commands.AddProduct
