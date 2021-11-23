@@ -15,3 +15,6 @@
 /home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/obj/Debug/net5.0/Infrastructure.pdb
 /home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/bin/Debug/net5.0/Application.dll
 /home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/bin/Debug/net5.0/Application.pdb
+/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/bin/Debug/net5.0/Infrastructure.runtimeconfig.json
+/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/bin/Debug/net5.0/Infrastructure.runtimeconfig.dev.json
+/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/obj/Debug/net5.0/Infrastructure.genruntimeconfig.cache

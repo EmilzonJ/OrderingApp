@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Domain;
 using Domain.CustomExceptions;
 using Domain.Entities;
 using Domain.Repositories;
@@ -14,18 +15,18 @@ namespace Application.Features.Products.Queries.GetProductList
 {
     public class GetProductListQueryHandler : IRequestHandler<GetProductListQuery, IEnumerable<ProductDto>>
     {
-        private readonly IReadOnlyRepository<Product, Guid> _productRepository;
+        private readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
 
-        public GetProductListQueryHandler(IReadOnlyRepository<Product, Guid> productRepository, IMapper mapper)
+        public GetProductListQueryHandler(IMapper mapper, IUnitOfWork db)
         {
-            _productRepository = productRepository;
             _mapper = mapper;
+            _db = db;
         }
 
         public async Task<IEnumerable<ProductDto>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.GetAllAsync();
+            var products = await _db.Products.GetAllAsync();
 
             if (products != null) return _mapper.Map<IEnumerable<ProductDto>>(products);
             

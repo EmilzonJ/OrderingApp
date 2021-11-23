@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using Application.Features.Products.Commands.AddProduct;
+using Application.Features.Products.Queries;
+using Application.Features.Products.Queries.GetProductJoinCategories;
 using Application.Features.Products.Queries.GetProductList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -9,7 +11,7 @@ namespace Web.Controllers.Products
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
@@ -17,6 +19,13 @@ namespace Web.Controllers.Products
         public ProductController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetProductJoinCategories()
+        {
+            var result = await _mediator.Send(new GetProductsCategories());
+            return Ok(result);
         }
 
         [HttpGet]

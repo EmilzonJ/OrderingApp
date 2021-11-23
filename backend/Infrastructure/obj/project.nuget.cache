@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EfI3rzTSgyEQWnP4szwQmlhfc1+T+BW878VBZWhfz9EmJPlq6H0eTUAjXX8E35azVS6/CBx2lTuIcQJ/3eesVA==",
+  "dgSpecHash": "Pql1tD1wAEkpfkSlSbuqSaHQRTszyESSukSbbUJ2a5IHFKsVvCymxtr9/MkkUYEeGkmmNVWrheILFpD0CFDxog==",
   "success": true,
   "projectFilePath": "/home/emilz/Escritorio/RealTimeApp/backend/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "/home/emilz/.nuget/packages/dotenv.net/3.1.1/dotenv.net.3.1.1.nupkg.sha512",
     "/home/emilz/.nuget/packages/fluentvalidation/10.3.4/fluentvalidation.10.3.4.nupkg.sha512",
     "/home/emilz/.nuget/packages/fluentvalidation.dependencyinjectionextensions/10.3.4/fluentvalidation.dependencyinjectionextensions.10.3.4.nupkg.sha512",
+    "/home/emilz/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/emilz/.nuget/packages/mediatr/9.0.0/mediatr.9.0.0.nupkg.sha512",
     "/home/emilz/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/9.0.0/mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "/home/emilz/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.2.0/microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
@@ -19,6 +20,7 @@
     "/home/emilz/.nuget/packages/microsoft.entityframeworkcore/5.0.12/microsoft.entityframeworkcore.5.0.12.nupkg.sha512",
     "/home/emilz/.nuget/packages/microsoft.entityframeworkcore.abstractions/5.0.12/microsoft.entityframeworkcore.abstractions.5.0.12.nupkg.sha512",
     "/home/emilz/.nuget/packages/microsoft.entityframeworkcore.analyzers/5.0.12/microsoft.entityframeworkcore.analyzers.5.0.12.nupkg.sha512",
+    "/home/emilz/.nuget/packages/microsoft.entityframeworkcore.design/5.0.12/microsoft.entityframeworkcore.design.5.0.12.nupkg.sha512",
     "/home/emilz/.nuget/packages/microsoft.entityframeworkcore.relational/5.0.12/microsoft.entityframeworkcore.relational.5.0.12.nupkg.sha512",
     "/home/emilz/.nuget/packages/microsoft.entityframeworkcore.sqlserver/5.0.12/microsoft.entityframeworkcore.sqlserver.5.0.12.nupkg.sha512",
     "/home/emilz/.nuget/packages/microsoft.extensions.caching.abstractions/5.0.0/microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
