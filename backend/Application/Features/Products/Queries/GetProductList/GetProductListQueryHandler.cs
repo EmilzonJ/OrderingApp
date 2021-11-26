@@ -27,6 +27,7 @@ namespace Application.Features.Products.Queries.GetProductList
         public async Task<IEnumerable<ProductDto>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
             var products = await _db.Products.GetAllAsync();
+            var categories = await _db.Categories.GetAllAsync();
 
             if (products != null) return _mapper.Map<IEnumerable<ProductDto>>(products);
             

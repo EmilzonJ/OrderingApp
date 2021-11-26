@@ -9,7 +9,6 @@ namespace Infrastructure.Persistence
     {
         public AppDataContextFactory() { }
 
-
         public AppDataContext CreateDbContext(string[] args)
         {
             DotEnv.Load(new DotEnvOptions(true, new[] {"..//.//Web/.env"}));

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Domain.Repositories;
 using Infrastructure.Persistence;
@@ -15,6 +16,8 @@ namespace Infrastructure.Repositories
         {
             Context = context;
         }
+
+        public IQueryable<TEntity> Query => Context.Set<TEntity>();
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
