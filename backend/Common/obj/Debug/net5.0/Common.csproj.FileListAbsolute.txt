@@ -1,0 +1,12 @@
+/home/emilz/Escritorio/RealTimeApp/backend/Common/bin/Debug/net5.0/Common.deps.json
+/home/emilz/Escritorio/RealTimeApp/backend/Common/bin/Debug/net5.0/Common.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Common/bin/Debug/net5.0/ref/Common.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Common/bin/Debug/net5.0/Common.pdb
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.csprojAssemblyReference.cache
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.GeneratedMSBuildEditorConfig.editorconfig
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.AssemblyInfoInputs.cache
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.AssemblyInfo.cs
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.csproj.CoreCompileInputs.cache
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/ref/Common.dll
+/home/emilz/Escritorio/RealTimeApp/backend/Common/obj/Debug/net5.0/Common.pdb
