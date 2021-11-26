@@ -1,4 +1,5 @@
 using System;
+using Domain;
 using Domain.Repositories;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
@@ -18,8 +19,8 @@ namespace Infrastructure
             services.AddDbContext<AppDataContext>(options =>
                 options.UseSqlServer(configuration["DB_CONNECTION"]));
 
-            services.AddScoped(typeof(IReadOnlyRepository<,>), typeof(ReadOnlyRepository<,>));
-            services.AddScoped(typeof(IWritableRepository<,>), typeof(WritableRepository<,>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddSingleton<IIdentityGenerator<Guid>, GuidIdentityGenerator>();
 
             return services;
